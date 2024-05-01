@@ -1,0 +1,113 @@
+﻿@model LoginViewModel
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@section Head {
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+        <title>Riode - Ultimate eCommerce Template</title>
+
+        <meta name="keywords" content="HTML5 Template" />
+        <meta name="description" content="Riode - Ultimate eCommerce Template">
+        <meta name="author" content="D-THEMES">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="~/assets/images/icons/favicon.png">
+
+        <script>
+            WebFontConfig = {
+                google: { families: ['Poppins:400,500,600,700'] }
+            };
+            (function (d) {
+                var wf = d.createElement('script'), s = d.scripts[0];
+                wf.src = 'js/webfont.js';
+                wf.async = true;
+                s.parentNode.insertBefore(wf, s);
+            })(document);
+        </script>
+
+
+        <link rel="stylesheet" type="text/css" href="~/assets/vendor/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="~/assets/vendor/animate/animate.min.css">
+
+        <!-- Plugins CSS File -->
+        <link rel="stylesheet" type="text/css" href="~/assets/vendor/magnific-popup/magnific-popup.min.css">
+
+        <!-- Main CSS File -->
+        <link rel="stylesheet" type="text/css" href="~/assets/css/style.min.css">
+    </head>
+}
+
+<main class="main">
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="demo1.html"><i class="d-icon-home"></i></a></li>
+                <li><a href="shop.html">Riode Shop</a></li>
+                <li>My Account</li>
+            </ul>
+        </div>
+    </nav>
+    <div class="page-content mt-6 pb-2 mb-10">
+        <div class="container">
+            <div class="login-popup">
+                <div class="form-box">
+                    <div class="tab tab-nav-simple tab-nav-boxed form-tab">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="signin">
+                                <form method="post">
+                                <div class="form-group mb-3">
+                                    <input asp-for="UsernameOrEmail" class="form-control" id="singin-email" placeholder="Username or Email Address *" />
+                                </div>
+                                <span asp-validation-for="UsernameOrEmail" class="text-danger"></span>
+                                <div class="form-group">
+                                    <input asp-for="Password" class="form-control" id="singin-password" placeholder="Password *" />
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger">
+                                    </div>
+                                <div class="form-footer">
+                                    <div class="form-checkbox">
+                                        <input asp-for="RememberMe" class="custom-checkbox" id="signin-remember"
+                                               />
+                                        <label class="form-control-label" for="signin-remember">
+                                            Remember
+                                            me
+                                        </label>
+                                    </div>
+                                    @* <a href="#" class="lost-link" asp-action="">Lost your password?</a> *@
+                                </div>
+                                <button class="btn btn-dark btn-block btn-rounded" type="submit">Login</button>
+                                </form>
+                                <div class="form-choice text-center">
+                                    <label class="ls-m">or Login With</label>
+                                    <div class="social-links">
+                                        <a href="#" class="social-link social-google fab fa-google border-no"></a>
+                                        <a href="#" class="social-link social-facebook fab fa-facebook-f border-no"></a>
+                                        <a href="#" class="social-link social-twitter fab fa-twitter border-no"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/elevatezoom/jquery.elevatezoom.min.js"></script>
+    <script src="~/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="~/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Main JS File -->
+    <script src="~/assets/js/main.min.js"></script>
+}
+

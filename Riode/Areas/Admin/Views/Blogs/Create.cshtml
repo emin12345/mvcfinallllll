@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+@model BlogCreateViewModel
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Create new brand</h4>
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Title</label>
+                            <input class="form-control" asp-for="Title" placeholder="Title">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Description</label>
+                            <input class="form-control" asp-for="Description" placeholder="Description">
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Author</label>
+                            <input class="form-control" asp-for="Author" placeholder="Author">
+                            <span asp-validation-for="Author" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Content</label>
+                            <input class="form-control" asp-for="Content" placeholder="Content">
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Famous Words</label>
+                            <input class="form-control" asp-for="FamousWord" placeholder="Famous Words">
+                            <span asp-validation-for="FamousWord" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Author's Comment</label>
+                            <input class="form-control" asp-for="AuthorComment" placeholder="Author's Comment">
+                            <span asp-validation-for="AuthorComment" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="imageInputs">
+                            <label for="BlogImages">Blog Images</label>
+                            <span asp-validation-for="BlogImages" class="text-danger"></span>
+                            <input id="imageInput" class="form-control" asp-for="BlogImages" placeholder="Image" accept="image/*">
+                        </div>
+                        <button type="button" id="addImage" class="btn-success">Add Image</button><br><br><br>
+
+                        <div class="form-group" id="BlogTopics">
+                            <label for="BlogTopics">Blog Topics</label>
+                            <span asp-validation-for="BlogTopics" class="text-danger"></span>
+                            <input class="form-control" asp-for="BlogTopics" placeholder="Topic">
+                        </div>
+                        <button type="button" id="addTopic" class="btn-success">Add Topic</button><br><br><br>
+
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button asp-action="Index" class="btn btn-light">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

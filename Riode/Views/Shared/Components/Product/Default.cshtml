@@ -1,0 +1,67 @@
+﻿@model ProductImageViewModel
+
+
+@foreach (var product in Model.Products)
+{
+    <div class="product-wrap">
+        <div class="product">
+            <figure class="product-media">
+                <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@product.Id">
+                    @if (Model.ProductImages.ToList().FirstOrDefault(i => i.ProductId == product.Id) != null)
+                    {
+                        <img src="~/assets/images/shop/@Model.ProductImages.ToList().FirstOrDefault(i => i.ProductId == product.Id).Image" alt="product" width="280" height="315">
+                    }
+                    else
+                    {
+                        <img src="~/assets/images/shop/no-image.webp" />
+                    }
+                </a>
+                <div class="product-label-group">
+                    <label class="product-label label-new">new</label>
+                    @if (product.Discount != null || product.Discount == 0)
+                    {
+                    }
+                    else
+                    {
+                        <label class="product-label label-sale">@product.Discount% OFF</label>
+                    }
+                </div>
+                <div class="product-action-vertical">
+                    <a class="btn-product-icon" asp-action="AddProductToBasket" asp-controller="Shop" asp-route-productId="@product.Id" title="Add to cart">
+                        <i class="d-icon-bag"></i>
+                    </a>
+                    <a href="#" class="btn-product-icon btn-wishlist"
+                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                </div>
+                <div class="product-action">
+                    <a class="btn-product btn-quickview" title="Quick View" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@product.Id">
+                        Quick
+                        View
+                    </a>
+                </div>
+            </figure>
+            <div class="product-details">
+                <div class="product-cat">
+                    <a href="shop-grid-3col.html">@product.Category.Name</a>
+                </div>
+                <h3 class="product-name">
+                    <a href="product.html">@product.Name</a>
+                </h3>
+                <div class="product-price">
+                    <ins class="new-price">$@product.Price</ins>
+                    @if (product.OldPrice != null && product.OldPrice > product.Price)
+                    {
+                        <del class="old-price">$@product.OldPrice</del>
+                    }
+                </div>
+                <div class="ratings-container">
+                    <div class="ratings-full">
+                        <span class="ratings" style="width:60%"></span>
+                        <span class="tooltiptext tooltip-top"></span>
+                    </div>
+                    <a href="product.html" class="rating-reviews">( 16 reviews )</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

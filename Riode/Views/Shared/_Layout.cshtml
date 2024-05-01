@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	@RenderSection("Head")
+
+<body class="@ViewBag.Class">
+	@RenderSection("Overlay", required: false)
+	<div class="page-wrapper">
+        <header class="header">
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-left">
+                        <p class="welcome-msg">Welcome to Riode store message or remove it!</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="dropdown">
+                            <a href="#currency">USD</a>
+                            <ul class="dropdown-box">
+                                <li><a href="#USD">USD</a></li>
+                                <li><a href="#EUR">EUR</a></li>
+                            </ul>
+                        </div>
+                        <!-- End DropDown Menu -->
+                        <div class="dropdown ml-5">
+                            <a href="#language">ENG</a>
+                            <ul class="dropdown-box">
+                                <li>
+                                    <a href="#USD">ENG</a>
+                                </li>
+                                <li>
+                                    <a href="#EUR">FRH</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End DropDown Menu -->
+                        <span class="divider"></span>
+                        <a href="contact-us.html" class="contact d-lg-show"><i class="d-icon-map"></i>Contact</a>
+                        <a href="#" class="help d-lg-show"><i class="d-icon-info"></i> Need Help</a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-action="Profile" asp-controller="User">
+                                <i class="d-icon-user"></i>@User.Identity.Name
+                            </a>
+                            <span class="delimiter">/</span>
+                            <a class="ml-0" asp-controller="Auth" asp-action="Logout">Logout</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Auth" asp-action="Login">
+                                <i class="d-icon-user"></i>Login
+                            </a>
+                            <span class="delimiter">/</span>
+                            <a class=" ml-0" asp-controller="User" asp-action="Register">Register</a>
+                        }
+                        <!-- End of Login -->
+                    </div>
+                </div>
+            </div>
+            <!-- End HeaderTop -->
+            <div class="header-middle sticky-header fix-top sticky-content">
+                <div class="container">
+                    <div class="header-left">
+                        <a href="#" class="mobile-menu-toggle">
+                            <i class="d-icon-bars2"></i>
+                        </a>
+                        <a asp-controller="Home" class="logo">
+                            <img src="~/assets/images/logo.png" alt="logo" width="153" height="44" />
+                        </a>
+                        <!-- End Logo -->
+
+                        <div class="header-search hs-simple">
+                            <form action="/Shop" method="get"
+                                class="input-wrapper">
+                                <input type="text" class="form-control" name="search" autocomplete="off"
+                                       placeholder="Search..." required />
+                                <button class="btn btn-search" type="submit" >
+                                    <i class="d-icon-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <!-- End Header Search -->
+                    </div>
+                    <div class="header-right">
+                        <a href="tel:#" class="icon-box icon-box-side">
+                            <div class="icon-box-icon mr-0 mr-lg-2">
+                                <i class="d-icon-phone"></i>
+                            </div>
+                            <div class="icon-box-content d-lg-show">
+                                <h4 class="icon-box-title">Call Us Now:</h4>
+                                <p>0(800) 123-456</p>
+                            </div>
+                        </a>
+                        <span class="divider"></span>
+                        <a href="wishlist.html" class="wishlist">
+                            <i class="d-icon-heart"></i>
+                        </a>
+                        <span class="divider"></span>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-bottom d-lg-show">
+                <div class="container">
+                    <div class="header-left">
+                        <nav class="main-nav">
+                            <ul class="menu">
+                                <li class="active">
+                                    <a asp-controller="Home">Home</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Shop">Shop</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Contact">Contact Us</a>
+                                </li>
+                                <li class="d-xl-show">
+                                    <a asp-controller="Blog">Blog</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="header-right">
+                        <a href="#"><i class="d-icon-card"></i>Special Offers</a>
+                        <a href="https://d-themes.com/buynow/riodehtml" target="_blank" class="ml-6">Buy Riode!</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+		<!-- End Header -->
+            @RenderBody()
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-top">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3">
+                            <a href="demo1.html" class="logo-footer">
+                                <img src="~/assets/images/logo-footer.png" alt="logo-footer" width="154" height="43" />
+                            </a>
+                            <!-- End FooterLogo -->
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="widget widget-newsletter form-wrapper form-wrapper-inline">
+                                <div class="newsletter-info mx-auto mr-lg-2 ml-lg-4">
+                                    <h4 class="widget-title">Subscribe to our Newsletter</h4>
+                                    <p>Get all the latest information, Sales and Offers.</p>
+                                </div>
+                                <form action="#" class="input-wrapper input-wrapper-inline">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                           placeholder="Email address here..." required />
+                                    <button class="btn btn-primary btn-rounded btn-md ml-2" type="submit">
+                                        subscribe<i class="d-icon-arrow-right"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <!-- End Newsletter -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End FooterTop -->
+                <div class="footer-middle">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget widget-info">
+                                <h4 class="widget-title">Contact Info</h4>
+                                <ul class="widget-body">
+                                    <li>
+                                        <label>Phone:</label>
+                                        <a href="tel:#">Toll Free (123) 456-7890</a>
+                                    </li>
+                                    <li>
+                                        <label>Email:</label>
+                                        <a href="mailto:mail@riode.com">mail@riode.com</a>
+                                    </li>
+                                    <li>
+                                        <label>Address:</label>
+                                        <a href="#">123 Street Name, City, England</a>
+                                    </li>
+                                    <li>
+                                        <label>WORKING DAYS / HOURS:</label>
+                                    </li>
+                                    <li>
+                                        <a href="#">Mon - Sun / 9:00 AM - 8:00 PM</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Widget -->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget ml-lg-4">
+                                <h4 class="widget-title">My Account</h4>
+                                <ul class="widget-body">
+                                    <li>
+                                        <a href="about-us.html">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Order History</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Returns</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Custom Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Terms &amp; Condition</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Widget -->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget ml-lg-4">
+                                <h4 class="widget-title">Contact Info</h4>
+                                <ul class="widget-body">
+                                    <li>
+                                        <a href="#">Sign in</a>
+                                    </li>
+                                    <li>
+                                        <a href="cart.html">View Cart</a>
+                                    </li>
+                                    <li>
+                                        <a href="wishlist.html">My Wishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Track My Order</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Help</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Widget -->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget widget-instagram">
+                                <h4 class="widget-title">Instagram</h4>
+                                <figure class="widget-body row">
+                                    <div class="col-3">
+                                        <img src="~/assets/images/instagram/01.jpg" alt="instagram 1" width="64" height="64" />
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="~/assets/images/instagram/02.jpg" alt="instagram 2" width="64" height="64" />
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="~/assets/images/instagram/03.jpg" alt="instagram 3" width="64" height="64" />
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="~/assets/images/instagram/04.jpg" alt="instagram 4" width="64" height="64" />
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="~/assets/images/instagram/05.jpg" alt="instagram 5" width="64" height="64" />
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="~/assets/images/instagram/06.jpg" alt="instagram 6" width="64" height="64" />
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="~/assets/images/instagram/07.jpg" alt="instagram 7" width="64" height="64" />
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="~/assets/images/instagram/08.jpg" alt="instagram 8" width="64" height="64" />
+                                    </div>
+                                </figure>
+                            </div>
+                            <!-- End Instagram -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End FooterMiddle -->
+                <div class="footer-bottom">
+                    <div class="footer-left">
+                        <figure class="payment">
+                            <img src="~/assets/images/payment.png" alt="payment" width="159" height="29" />
+                        </figure>
+                    </div>
+                    <div class="footer-center">
+                        <p class="copyright">Riode eCommerce &copy; 2021. All Rights Reserved</p>
+                    </div>
+                    <div class="footer-right">
+                        <div class="social-links">
+                            <a href="#" class="social-link social-facebook fab fa-facebook-f"></a>
+                            <a href="#" class="social-link social-twitter fab fa-twitter"></a>
+                            <a href="#" class="social-link social-linkedin fab fa-linkedin-in"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End FooterBottom -->
+            </div>
+        </footer>
+	</div>
+
+    <div class="sticky-footer sticky-content fix-bottom">
+        <a href="demo1.html" class="sticky-link active">
+            <i class="d-icon-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="shop.html" class="sticky-link">
+            <i class="d-icon-volume"></i>
+            <span>Categories</span>
+        </a>
+        <a href="wishlist.html" class="sticky-link">
+            <i class="d-icon-heart"></i>
+            <span>Wishlist</span>
+        </a>
+        <a href="account.html" class="sticky-link">
+            <i class="d-icon-user"></i>
+            <span>Account</span>
+        </a>
+        <div class="header-search hs-toggle dir-up">
+            <a href="#" class="search-toggle sticky-link">
+                <i class="d-icon-search"></i>
+                <span>Search</span>
+            </a>
+            <form action="#" class="input-wrapper">
+                <input type="text" class="form-control" name="search" autocomplete="off"
+                       placeholder="Search your keyword..." required />
+                <button class="btn btn-search" type="submit">
+                    <i class="d-icon-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+	<!-- Scroll Top -->
+	<a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top custom-scroll-top"></a>
+
+    @RenderSection("PSWP", required: false)
+
+	<!-- MobileMenu -->
+	<div class="mobile-menu-wrapper">
+		<div class="mobile-menu-overlay">
+		</div>
+		<!-- End of Overlay -->
+		<a class="mobile-menu-close" href="#">
+			<i class="close-icon"></i>
+		</a>
+		<!-- End of CloseButton -->
+		<div class="mobile-menu-container scrollable">
+			<ul class="mobile-menu mmenu-anim">
+				<li>
+					<a href="#sec-overview">Overview</a>
+				</li>
+				<li>
+					<a href="#sec-demos">Demos</a>
+				</li>
+				<li>
+					<a href="#sec-features">Features</a>
+				</li>
+				<li>
+					<a href="#sec-layouts">Layouts</a>
+				</li>
+				<li>
+					<a href="#sec-elements">Elements</a>
+				</li>
+				<li>
+					<a href="#footer">Support</a>
+				</li>
+				<li>
+					<a href="https://1.envato.market/">Buy Riode!</a>
+				</li>
+			</ul>
+			<!-- End of MobileMenu -->
+		</div>
+	</div>
+
+	@RenderSection("Scripts")
+    <script src="~/backend/js/script.js"></script>
+
+</body>
+
+</html>

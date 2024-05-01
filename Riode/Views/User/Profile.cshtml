@@ -1,0 +1,189 @@
+﻿﻿@{
+	ViewData["Title"] = "User Profile";
+}
+
+@model UserUpdateViewModel
+
+@section Head {
+	<head>
+		<meta charset="UTF-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+		<title>Shop</title>
+
+		<meta name="keywords" content="HTML5 Template" />
+		<meta name="description" content="Riode - Ultimate eCommerce Template">
+		<meta name="author" content="D-THEMES">
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="~/assets/images/icons/favicon.png">
+
+		<script>
+			WebFontConfig = {
+				google: { families: ['Poppins:400,500,600,700'] }
+			};
+			(function (d) {
+				var wf = d.createElement('script'), s = d.scripts[0];
+				wf.src = 'js/webfont.js';
+				wf.async = true;
+				s.parentNode.insertBefore(wf, s);
+			})(document);
+		</script>
+
+
+		<link rel="stylesheet" type="text/css" href="~/assets/vendor/fontawesome-free/css/all.min.css">
+		<link rel="stylesheet" type="text/css" href="~/assets/vendor/animate/animate.min.css">
+
+		<!-- Plugins CSS File -->
+		<link rel="stylesheet" type="text/css" href="~/assets/vendor/magnific-popup/magnific-popup.min.css">
+		<link rel="stylesheet" type="text/css" href="~/assets/vendor/owl-carousel/owl.carousel.min.css">
+		<link rel="stylesheet" type="text/css" href="~/assets/vendor/nouislider/nouislider.min.css">
+
+		<!-- Main CSS File -->
+		<link rel="stylesheet" type="text/css" href="~/assets/css/style.min.css">
+	</head>
+
+}
+
+<main class="main account">
+	<nav class="breadcrumb-nav">
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a href="demo1.html"><i class="d-icon-home"></i></a></li>
+				<li>Account</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="page-content mt-4 mb-10 pb-6">
+		<div class="container">
+			<h2 class="title title-center mb-10">My Account</h2>
+			<div class="tab tab-vertical gutter-lg">
+				<ul class="nav nav-tabs mb-4 col-lg-3 col-md-4" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link" href="#account">Account details</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#orders">Orders</a>
+					</li>
+					<li class="nav-item">
+						<a asp-controller="auth" asp-action="logout" class="text-danger">Logout</a>
+					</li>
+				</ul>
+				<div class="tab-content col-lg-9 col-md-8">
+					<div class="tab-pane active" id="account">
+					<form asp-action="UpdateProfile" method="post" class="form">
+						<div class="row">
+							<div class="col-sm-12">
+								<label class="mt-4">Full Name</label>
+								<input asp-for="FullName" class="form-control mb-0" placeholder="Full Name">
+								<span asp-validation-for="FullName" class="text-danger"></span>
+							</div>
+						</div>
+
+						<label class="mt-4">Username</label>
+						<input asp-for="UserName" class="form-control mb-0" placeholder="Fullname">
+						<span asp-validation-for="UserName" class="text-danger"></span>
+
+						<label class="mt-4">Email Address</label>
+						<input asp-for="Email" class="form-control mb-0" placeholder="Fullname">
+						<span asp-validation-for="Email" class="text-danger"></span>
+						<fieldset>
+							<legend>Password Change</legend>
+							<label class="mt-4">Current password (Leave blank if you don't want to change)</label>
+							<input asp-for="CurrentPassword" placeholder="Current password" class="form-control mb-0" />
+							<span asp-validation-for="CurrentPassword" class="text-danger"></span>
+
+								<label class="mt-4">New password (Leave blank if you don't want to change)</label>
+							<input asp-for="NewPassword" placeholder="New password" class="form-control mb-0" />
+							<span asp-validation-for="NewPassword" class="text-danger"></span>
+
+							<label class="mt-4">Confirm new password</label>
+							<input asp-for="ConfirmNewPassword" placeholder="Confirm new password" class="form-control mb-0" />
+							<span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+						</fieldset>
+						@if (TempData["Success"] != null)
+						{
+							<div class="text-success mb-3">
+								@TempData["Success"].ToString()
+							</div>
+						}
+						<button type="submit" class="btn btn-primary">SAVE CHANGES</button>
+					</form>
+				</div>
+					<div class="tab-pane" id="orders">
+						<table class="order-table">
+							<thead>
+								<tr>
+									<th class="pl-2">Order</th>
+									<th>Date</th>
+									<th>Status</th>
+									<th>Total</th>
+									<th class="pr-2">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="order-number"><a href="#">#3596</a></td>
+									<td class="order-date"><time>February 24, 2021</time></td>
+									<td class="order-status"><span>On hold</span></td>
+									<td class="order-total"><span>$900.00 for 5 items</span></td>
+									<td class="order-action"><a href="#" class="btn btn-primary btn-link btn-underline">View</a></td>
+								</tr>
+								<tr>
+									<td class="order-number"><a href="#">#3593</a></td>
+									<td class="order-date"><time>February 21, 2021</time></td>
+									<td class="order-status"><span>On hold</span></td>
+									<td class="order-total"><span>$290.00 for 2 items</span></td>
+									<td class="order-action"><a href="#" class="btn btn-primary btn-link btn-underline">View</a></td>
+								</tr>
+								<tr>
+									<td class="order-number"><a href="#">#2547</a></td>
+									<td class="order-date"><time>January 4, 2021</time></td>
+									<td class="order-status"><span>On hold</span></td>
+									<td class="order-total"><span>$480.00 for 8 items</span></td>
+									<td class="order-action"><a href="#" class="btn btn-primary btn-link btn-underline">View</a></td>
+								</tr>
+								<tr>
+									<td class="order-number"><a href="#">#2549</a></td>
+									<td class="order-date"><time>January 19, 2021</time></td>
+									<td class="order-status"><span>On hold</span></td>
+									<td class="order-total"><span>$680.00 for 5 items</span></td>
+									<td class="order-action"><a href="#" class="btn btn-primary btn-link btn-underline">View</a></td>
+								</tr>
+								<tr>
+									<td class="order-number"><a href="#">#4523</a></td>
+									<td class="order-date"><time>Jun 6, 2021</time></td>
+									<td class="order-status"><span>On hold</span></td>
+									<td class="order-total"><span>$564.00 for 3 items</span></td>
+									<td class="order-action"><a href="#" class="btn btn-primary btn-link btn-underline">View</a></td>
+								</tr>
+								<tr>
+									<td class="order-number"><a href="#">#4526</a></td>
+									<td class="order-date"><time>Jun 19, 2021</time></td>
+									<td class="order-status"><span>On hold</span></td>
+									<td class="order-total"><span>$123.00 for 8 items</span></td>
+									<td class="order-action"><a href="#" class="btn btn-primary btn-link btn-underline">View</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+
+@section Scripts {
+	<!-- Plugins JS File -->
+	<script src="~/assets/vendor/jquery/jquery.min.js"></script>
+	<script src="~/assets/vendor/sticky/sticky.min.js"></script>
+	<script src="~/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+	<script src="~/assets/vendor/elevatezoom/jquery.elevatezoom.min.js"></script>
+	<script src="~/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="~/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+	<script src="~/assets/vendor/nouislider/nouislider.min.js"></script>
+	<!-- Main JS File -->
+	<script src="~/assets/js/main.min.js"></script>
+}

@@ -1,0 +1,116 @@
+﻿@{
+        ViewData["Title"] = "Update";
+}
+
+@model ProductUpdateViewModel
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Update product</h4>
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Title</label>
+                            <input class="form-control" asp-for="Name" placeholder="Title">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Price</label>
+                            <input class="form-control" asp-for="Price" placeholder="Price">
+                            <span asp-validation-for="Price" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">OldPrice</label>
+                            <input class="form-control" asp-for="OldPrice" placeholder="OldPrice">
+                            <span asp-validation-for="OldPrice" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Rating</label>
+                            <input class="form-control" asp-for="Rating" placeholder="Rating">
+                            <span asp-validation-for="Rating" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Description</label>
+                            <input class="form-control" asp-for="Description" placeholder="Description">
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Features</label>
+                            <input class="form-control" asp-for="Features" placeholder="Features">
+                            <span asp-validation-for="Features" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Material</label>
+                            <input class="form-control" asp-for="Material" placeholder="Material">
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">RecommendedUse</label>
+                            <input class="form-control" asp-for="RecommendedUse" placeholder="RecommendedUse">
+                            <span asp-validation-for="RecommendedUse" class="text-danger"></span>
+                        </div>
+                        <label for="exampleInputPassword1">Product Images</label><br>
+                        <p class="text-danger">Attention: There needs to be at least one image of product!</p>
+                        @foreach (var image in Model.ProductImages)
+                        {
+                            <div class="form-group">
+                                <img class="p-image" src="~/assets/images/shop/@image.Image"
+                                     alt="@Model.Name" width="300" height="200"><br>
+                            </div>
+                            <a class="btn btn-danger deleteImageBtn" asp-action="DeleteImage" asp-route-id="@image.Id">
+                                <i class="fa-solid fa-trash"></i> Delete image
+                            </a> <br>
+
+                            <br>
+                        }
+                        <div class="form-group" id="imageInputs">
+                            <label for="Image">Add new image</label>
+                            <span asp-validation-for="ProductImage" class="text-danger"></span>
+                            <input id="imageInput" class="form-control product-image-input" asp-for="ProductImage" placeholder="Image" accept="image/*">
+                        </div>
+                        <button type="button" id="addImageUpdate" class="btn-success">Add Image</button><br><br>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">Categories</label>
+                            <select class="form-control" id="exampleFormControlSelect2" disabled>
+                                @foreach (Category category in ViewBag.Categories)
+                                {
+                                    @if(category.Id == Model.CategoryId)
+                                    {
+                                        <option value="@category.Id" selected>@category.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@category.Id">@category.Name</option>                                      
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">Brands</label>
+                            <select class="form-control" id="exampleFormControlSelect2" disabled>
+                                @foreach (Brand brand in ViewBag.Brands)
+                                {
+                                    @if (brand.Id == Model.BrandId)
+                                    {
+                                        <option value="@Model.BrandId" selected>@brand.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@Model.BrandId">@brand.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button asp-action="Index" class="btn btn-light">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

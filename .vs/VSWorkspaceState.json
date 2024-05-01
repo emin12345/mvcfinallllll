@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Riode",
+    "\\Riode\\Areas",
+    "\\Riode\\Areas\\Admin",
+    "\\Riode\\Areas\\Admin\\Controllers",
+    "\\Riode\\ViewComponents",
+    "\\Riode\\Views",
+    "\\Riode\\Views\\Auth"
+  ],
+  "SelectedNode": "\\Riode\\ViewComponents\\ProductViewComponent.cs",
+  "PreviewInSolutionExplorer": false
+}

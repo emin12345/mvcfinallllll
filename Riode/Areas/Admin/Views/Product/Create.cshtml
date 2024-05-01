@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+@model ProductCreateViewModel
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description">
+                        Basic form layout
+                    </p>
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="Title">Name</label>
+                            <input class="form-control" asp-for="Name" placeholder="Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <input class="form-control" asp-for="Description" placeholder="Description">
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Price">Price</label>
+                            <input class="form-control" asp-for="Price" placeholder="Price">
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Rating">Rating</label>
+                            <input class="form-control" asp-for="Rating" placeholder="Rating">
+                            <span asp-validation-for="Rating" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="DiscountPercent">Discount</label>
+                            <input class="form-control" asp-for="Discount" placeholder="Discount">
+                            <span asp-validation-for="Discount" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="imageInputs">
+                            <label for="Image">Image</label>
+                            <span asp-validation-for="ProductImage" class="text-danger"></span>
+                            <input id="imageInput" class="form-control" asp-for="ProductImage" placeholder="Image" accept="image/*">
+                        </div>
+
+                        <button type="button" id="addImage" class="btn-success">Add Image</button><br><br><br>
+
+                        <div class="form-group">
+                            <label for="Features">Features</label>
+                            <input class="form-control" asp-for="Features" placeholder="Features">
+                            <span asp-validation-for="Features" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="recommended-use">Recommended Use</label>
+                            <input class="form-control" asp-for="RecommendedUse" placeholder="Recommended Use">
+                            <span asp-validation-for="RecommendedUse" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Material">Material</label>
+                            <input class="form-control" asp-for="Material" placeholder="Material">
+                            <span asp-validation-for="Material" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">Is in stock</label>
+                            <select class="form-control" id="exampleFormControlSelect2">
+                                    <option value="True" selected>Yes</option>
+                                    <option value="False">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">Categories</label>
+                            <select class="form-control" id="exampleFormControlSelect2" name="CategoryId">
+                                @foreach (Category category in ViewBag.Categories)
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">Brands</label>
+                            <select class="form-control" id="exampleFormControlSelect2" name="BrandId">
+                                @foreach (Brand brand in ViewBag.Brands)
+                                {
+                                    <option value="@brand.Id">@brand.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger">
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

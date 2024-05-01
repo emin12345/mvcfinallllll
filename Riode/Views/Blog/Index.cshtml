@@ -1,0 +1,254 @@
+﻿@{
+    ViewData["Title"] = "Blog";
+}
+
+@model List<Blog>
+
+@section Head {
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Riode - Ultimate eCommerce Template</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Riode - Ultimate eCommerce Template">
+    <meta name="author" content="D-THEMES">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="~/assets/images/icons/favicon.png">
+
+    <script>
+        WebFontConfig = {
+            google: { families: [ 'Poppins:400,500,600,700' ] }
+        };
+        ( function ( d ) {
+            var wf = d.createElement( 'script' ), s = d.scripts[ 0 ];
+            wf.src = 'js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore( wf, s );
+        } )( document );
+    </script>
+
+
+    <link rel="stylesheet" type="text/css" href="~/assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendor/animate/animate.min.css">
+
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendor/owl-carousel/owl.carousel.min.css">
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style.min.css">
+</head>
+}
+
+<main class="main">
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="demo1.html"><i class="d-icon-home"></i></a></li>
+                <li><a href="#" class="active">Blog</a></li>
+                <li>Classic</li>
+            </ul>
+        </div>
+    </nav>
+    <div class="page-content with-sidebar">
+        <div class="container">
+            <div class="row gutter-lg">
+                <div class="col-lg-9">
+                    <div class="posts">
+                        @foreach (var blog in Model)
+                        {
+                            <article class="post post-classic mb-7">
+                                <figure class="post-media overlay-zoom">
+                                    <a href="post-single.html">
+                                        <img src="~/assets/images/blog/1_lg.jpg" width="870" height="420" alt="post" />
+                                    </a>
+                                </figure>
+                                <div class="post-details">
+                                    <div class="post-meta">
+                                        by <a href="#" class="post-author">@blog.Author</a>
+                                        on <a href="#" class="post-date">@blog.CreatedDate.ToString("dd/MM/yyyy")</a>
+                                        | <a href="#" class="post-comment"><span>3</span> Comments</a>
+                                    </div>
+                                    <h4 class="post-title">
+                                        <a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">
+                                            @blog.Title
+                                        </a>
+                                    </h4>
+                                    <p class="post-content">
+                                        @blog.Description
+                                    </p>
+                                    <a class="btn btn-link btn-underline btn-primary" asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">
+                                        Read
+                                        more<i class="d-icon-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1"
+                               aria-disabled="true">
+                                <i class="d-icon-arrow-left"></i>Prev
+                            </a>
+                        </li>
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item">
+                            <a class="page-link page-link-next" href="#" aria-label="Next">
+                                Next<i class="d-icon-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <aside class="col-lg-3 right-sidebar sidebar-fixed sticky-sidebar-wrapper">
+                    <div class="sidebar-overlay">
+                        <a class="sidebar-close" href="#"><i class="d-icon-times"></i></a>
+                    </div>
+                    <a href="#" class="sidebar-toggle"><i class="fas fa-chevron-left"></i></a>
+                    <div class="sidebar-content">
+                        <div class="sticky-sidebar" data-sticky-options="{'top': 89, 'bottom': 70}">
+                            <div class="widget widget-search border-no mb-2">
+                                <form action="#" class="input-wrapper input-wrapper-inline btn-absolute">
+                                    <input type="text" class="form-control" name="search" autocomplete="off"
+                                           placeholder="Search in Blog" required />
+                                    <button class="btn btn-search btn-link" type="submit">
+                                        <i class="d-icon-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="widget widget-collapsible border-no">
+                                <h3 class="widget-title">Blog Categories</h3>
+                                <ul class="widget-body filter-items search-ul">
+                                    <li><a href="#">Accessories</a></li>
+                                    <li>
+                                        <a href="#">Clothing</a>
+                                        <ul class="children">
+                                            <li><a href="#">Summer Sale</a></li>
+                                            <li><a href="#">Winter Sale</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Musicial instruments</a>
+                                        <ul class="children">
+                                            <li><a href="#">Headphone</a></li>
+                                            <li><a href="#">Speaker</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Fashion</a></li>
+                                    <li><a href="#">Lifestyle</a></li>
+                                    <li><a href="#">Backpack & Fashion bags</a></li>
+                                </ul>
+                            </div>
+                            <div class="widget widget-collapsible">
+                                <h3 class="widget-title">Popular Posts</h3>
+                                <div class="widget-body">
+                                    <div class="post-col">
+                                        <div class="post post-list-sm">
+                                            <figure class="post-media">
+                                                <a href="post-single.html">
+                                                    <img src="~/assets/images/blog/1_xs.jpg" width="90" height="90"
+                                                         alt="post" />
+                                                </a>
+                                            </figure>
+                                            <div class="post-details">
+                                                <div class="post-meta">
+                                                    <a href="#" class="post-date">Nov 22, 2020</a>
+                                                </div>
+                                                <h4 class="post-title">
+                                                    <a href="post-single.html">
+                                                        The Best
+                                                        Choice For
+                                                        Spending Time
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="post post-list-sm">
+                                            <figure class="post-media">
+                                                <a href="post-single.html">
+                                                    <img src="~/assets/images/blog/2_xs.jpg" width="90" height="90"
+                                                         alt="post" />
+                                                </a>
+                                            </figure>
+                                            <div class="post-details">
+                                                <div class="post-meta">
+                                                    <a href="#" class="post-date">Jun 6, 2019</a>
+                                                </div>
+                                                <h4 class="post-title">
+                                                    <a href="post-single.html">
+                                                        Women's
+                                                        Fashion
+                                                        Summer Dress
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="post post-list-sm">
+                                            <figure class="post-media">
+                                                <a href="post-single.html">
+                                                    <img src="~/assets/images/blog/3_xs.jpg" width="90" height="90"
+                                                         alt="post" />
+                                                </a>
+                                            </figure>
+                                            <div class="post-details">
+                                                <div class="post-meta">
+                                                    <a href="#" class="post-date">May 13, 2020</a>
+                                                </div>
+                                                <h4 class="post-title">
+                                                    <a href="post-single.html">
+                                                        Women’s
+                                                        Sneaker
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget widget-collapsible">
+                                <h3 class="widget-title">About us</h3>
+                                <div class="widget-body">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                                        nonummy nibh euismod tincidunt.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="widget widget-posts widget-collapsible">
+                                <h3 class="widget-title">Tag Cloud</h3>
+                                <div class="widget-body">
+                                    <a href="#" class="tag">Bag</a>
+                                    <a href="#" class="tag">Classic</a>
+                                    <a href="#" class="tag">Converse</a>
+                                    <a href="#" class="tag">Leather</a>
+                                    <a href="#" class="tag">Fit</a>
+                                    <a href="#" class="tag">Green</a>
+                                    <a href="#" class="tag">Man</a>
+                                    <a href="#" class="tag">Jeans</a>
+                                    <a href="#" class="tag">Women</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Plugins JS File -->
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/sticky/sticky.min.js"></script>
+    <script src="~/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+    <!-- Main JS File -->
+    <script src="~/assets/js/main.min.js"></script>
+}
